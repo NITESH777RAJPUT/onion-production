@@ -2,48 +2,70 @@ import React from 'react';
 
 const Team = () => {
   const teamStats = [
-    { role: "Cinematographer", count: "02 Members" },
+    { role: "Cinematographers", count: "02 Members" },
     { role: "Video Editors", count: "02 Members" },
-    { role: "Graphic Designer", count: "02 Members" },
-    { role: "Web Development Team", count: "04 Members" },
-    { role: "Content Writer", count: "02 Members" },
-    { role: "Director", count: "02 Members" },
+    { role: "Graphic Designers", count: "02 Members" },
+    { role: "Web Developers", count: "04 Members" },
+    { role: "Content Writers", count: "02 Members" },
+    { role: "Directors", count: "02 Members" },
   ];
 
   return (
-    <section className="py-24 bg-black text-white overflow-hidden border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          
-          {/* Left Side: Text Content */}
-          <div className="space-y-10">
-            <h2 className="text-7xl md:text-8xl font-black leading-[0.8] tracking-tighter uppercase">
-              MEET <span className="block text-green-500">OUR</span> TEAM
+    <section className="py-20 md:py-32 bg-black text-white overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-5 md:px-10">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* Left: Text + Stats */}
+          <div className="space-y-10 md:space-y-12">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter uppercase">
+              MEET <span className="text-green-500 block">OUR</span> TEAM
             </h2>
 
-            <ul className="space-y-4">
+            <p className="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed">
+              A tight-knit squad of creators, tech ninjas, and visual storytellers.  
+              We may be small, but we deliver massive impact — every frame counts.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
               {teamStats.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 text-xl md:text-2xl font-medium text-zinc-300">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <span className="font-bold text-white">{item.role}</span>
-                  <span className="text-zinc-500 font-mono">:- {item.count}</span>
-                </li>
+                <div 
+                  key={index}
+                  className="flex items-center gap-4 p-5 rounded-xl bg-zinc-900/50 border border-white/10 hover:border-green-500/40 transition-all duration-300 hover:bg-zinc-900/70"
+                >
+                  <div className="w-3 h-3 bg-green-500 rounded-full flex-shrink-0" />
+                  <div>
+                    <div className="text-xl font-bold text-white">{item.role}</div>
+                    <div className="text-sm text-zinc-400 font-mono">{item.count}</div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Right Side: Image */}
-          <div className="relative pt-10 md:pt-0">
-            <div className="w-full aspect-[4/3] bg-zinc-900 overflow-hidden shadow-2xl rounded-2xl border border-white/10">
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" 
-                alt="Team working" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+          {/* Right: Image Section (full color, no grayscale) */}
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+              <img
+                // Yahan apna actual team photo daal do (public folder ya assets se)
+                // Example: src="/images/our-team-group.jpg"
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" // placeholder — change this
+                alt="Our Onion Media Team"
+                className="w-full h-auto aspect-[4/3] md:aspect-[5/4] object-cover transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl"
               />
+              {/* Optional subtle overlay for depth (remove if not needed) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
-            <p className="mt-8 text-sm text-zinc-500 leading-relaxed font-medium uppercase tracking-tight max-w-md">
-              Our team consists of industry veterans and creative rebels who push the boundaries of visual excellence every single day.
-            </p>
+
+            {/* Floating tagline / caption */}
+            <div className="absolute -bottom-10 md:-bottom-12 left-6 md:left-10 right-6 md:right-10 bg-zinc-900/95 backdrop-blur-lg border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl">
+              <p className="text-base md:text-lg text-zinc-200 font-medium leading-relaxed">
+                "Passionate about every shot, obsessed with every edit.  
+                This is the team that brings your vision to life."
+              </p>
+              <p className="mt-3 text-sm text-green-500 font-semibold uppercase tracking-wider">
+                — The Onion Crew
+              </p>
+            </div>
           </div>
 
         </div>

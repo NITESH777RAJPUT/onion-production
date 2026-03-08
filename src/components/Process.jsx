@@ -1,59 +1,108 @@
-import React from 'react';
+// Process.jsx
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Process() {
   const steps = [
     {
       num: "1",
-      title: "The Briefing",
-      desc: "We understand your brand DNA and your goals for the project."
+      title: "The Brand Therapy Session",
+      desc: "You talk, we listen. We ask a few smart questions (and maybe one weird one) to understand your brand's vibe, goals, and what's been holding you back.",
+      illustration: "/illustrations/therapy.png", // replace with your actual image path
+      icon: "📱",
     },
     {
       num: "2",
       title: "The Secret Recipe",
-      desc: "We cook up a strategy—one part creativity, one part research, and a pinch of 'why didn't I think of that'."
+      desc: "We cook up a strategy—one part creativity, one part research, and a pinch of 'why didn't I think of that'.",
+      illustration: "/illustrations/recipe-magnifier.png",
+      icon: "🔍",
     },
     {
       num: "3",
       title: "The Execution",
-      desc: "Cameras roll, edits happen, and content takes shape. The kind people actually want to watch."
+      desc: "Cameras roll, edits happen, and content takes shape. The kind of content people actually want to watch (not just scroll past).",
+      illustration: "/illustrations/execution-megaphone.png",
+      icon: "🎥",
     },
     {
       num: "4",
       title: "The 'Oh, This Works' Moment",
-      desc: "Content goes live. Your audience engages. The numbers start moving. We fine-tune as needed."
-    }
+      desc: "The content goes live. Your audience engages. The numbers start moving. We track what's working and fine-tune as needed.",
+      illustration: "/illustrations/results-checklist.png",
+      icon: "✅",
+    },
   ];
 
-  return (
-    <section className="py-24 bg-black text-white relative">
-      <div className="max-w-5xl mx-auto px-6 md:px-10">
-        
-        {/* Timeline Line (Desktop Only) */}
-        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-zinc-800"></div>
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
 
-        <div className="space-y-24">
+  return (
+    <section className="relative py-16 md:py-32 bg-black text-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-5 md:px-10 relative">
+        {/* Heading */}
+        <div className="text-center mb-12 md:mb-20" data-aos="fade-up">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">
+            Our <span className="text-yellow-400">Process</span>
+          </h2>
+        </div>
+
+        {/* Timeline Line - centered on desktop, left on mobile */}
+        <div className="absolute left-8 md:left-1/2 top-28 md:top-44 bottom-0 w-1 bg-yellow-400/30 md:-translate-x-1/2 z-0 hidden md:block" />
+
+        <div className="space-y-20 md:space-y-32 relative z-10">
           {steps.map((step, i) => (
-            <div key={i} className={`flex flex-col md:flex-row items-center gap-10 md:gap-20 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
-              
-              {/* Text Side */}
-              <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="inline-flex items-center justify-center w-10 h-10 bg-yellow-400 text-black rounded-full font-black text-sm mb-2">
-                  {step.num}
+            <div
+              key={i}
+              className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 relative
+                ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+              data-aos="fade-up"
+              data-aos-delay={i * 150}
+            >
+              {/* Illustration - on desktop alternates side, on mobile always top */}
+              <div
+                className={`w-24 h-24 md:w-32 md:h-32 flex-shrink-0 order-1 md:order-${
+                  i % 2 === 0 ? "1" : "2"
+                }`}
+              >
+                <div className="relative w-full h-full bg-zinc-900/50 rounded-2xl border border-yellow-400/30 flex items-center justify-center overflow-hidden">
+                  {/* Use real image here */}
+                  {/* <img
+                    src={step.illustration}
+                    alt={step.title}
+                    className="w-4/5 h-4/5 object-contain"
+                  /> */}
+                  <span className="text-5xl md:text-6xl">{step.icon}</span>
                 </div>
-                <h3 className="text-3xl font-black uppercase tracking-tighter">{step.title}</h3>
-                <p className="text-zinc-500 font-medium leading-relaxed max-w-sm mx-auto md:mx-0">
+              </div>
+
+              {/* Number Circle - centered on line for desktop, left for mobile */}
+              <div
+                className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-zinc-900 border-4 border-yellow-400 flex items-center justify-center text-2xl md:text-3xl font-black shadow-xl z-10 order-2 md:order-${
+                  i % 2 === 0 ? "2" : "1"
+                } md:absolute md:left-1/2 md:-translate-x-1/2`}
+              >
+                {step.num}
+              </div>
+
+              {/* Content Block */}
+              <div
+                className={`flex-1 bg-zinc-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-xl order-3
+                  md:max-w-lg ${i % 2 === 0 ? "md:ml-auto" : "md:mr-auto"}`}
+              >
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-yellow-400">
+                  {step.title}
+                </h3>
+                <p className="text-zinc-300 leading-relaxed text-base md:text-lg">
                   {step.desc}
                 </p>
               </div>
-
-              {/* Visual Side (Placeholder for Icons/Images) */}
-              <div className="flex-1 flex justify-center">
-                <div className="w-48 h-48 bg-zinc-900 rounded-3xl border border-white/5 flex items-center justify-center shadow-2xl overflow-hidden">
-                   {/* Aap yahan apni icons ya small animations daal sakte hain */}
-                   <div className="text-6xl opacity-50">✨</div>
-                </div>
-              </div>
-
             </div>
           ))}
         </div>

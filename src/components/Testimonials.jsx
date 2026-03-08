@@ -16,31 +16,47 @@ function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-28 bg-black text-white">
 
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-4xl font-bold text-center mb-12">
-          Client <span className="text-green-600">Testimonials</span>
-        </h2>
+        {/* Heading */}
+        <div data-aos="fade-up" className="text-center mb-20">
 
+          <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tight">
+            Client <span className="text-yellow-400">Testimonials</span>
+          </h2>
+
+          <p className="text-zinc-500 mt-6 max-w-xl mx-auto">
+            Hear what our clients say about working with our creative team.
+          </p>
+
+        </div>
+
+
+        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-8">
 
           {testimonials.map((item, index) => (
+
             <div
               key={index}
-              className="p-6 border rounded-xl shadow-sm"
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
+              className="group p-8 rounded-2xl bg-zinc-900 border border-white/10 
+              hover:border-yellow-400/40 transition-all duration-300 hover:scale-[1.03]"
             >
 
-              <p className="text-gray-600 mb-4">
+              <p className="text-zinc-400 leading-relaxed mb-6">
                 "{item.text}"
               </p>
 
-              <h3 className="font-semibold text-green-600">
+              <h3 className="font-bold text-yellow-400">
                 {item.name}
               </h3>
 
             </div>
+
           ))}
 
         </div>
