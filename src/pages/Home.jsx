@@ -7,7 +7,7 @@ import About from "../components/About";
 import Process from "../components/Process";
 import Team from "../components/Team";
 import WhyChoose from "../components/WhyChoose";
-import Portfolio from "../components/Portfolio";
+// import Portfolio from "../components/Portfolio";
 import Testimonials from "../components/Testimonials";
 import Brands from "../components/Brands";
 import Contact from "../components/Contact";
@@ -30,7 +30,7 @@ function Home() {
       <Process />
       <Team />
       <WhyChoose />
-      <Portfolio />
+      {/* <Portfolio /> */}
       <Testimonials />
       <Brands />
       <Contact />
