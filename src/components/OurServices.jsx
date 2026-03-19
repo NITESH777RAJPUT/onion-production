@@ -26,54 +26,55 @@ function OurServices() {
     }
   };
 
+  // 🔥 SAME COUNT + CLOUDINARY PLACEHOLDER
   const videos = {
     UGC: [
-      "/videos/ugc/v1.mp4",
-      "/videos/ugc/v2.mp4",
-      "/videos/ugc/v3.mp4",
-      "/videos/ugc/v4.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773928725/v1_eqilzs.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773927220/v2_b70g19.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773927220/v3_uezcdu.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773927219/v4_ati5op.mp4",
     ],
 
     SMM: [
-      "/videos/smm/v1.mp4",
-      "/videos/smm/v2.mp4",
-      "/videos/smm/v3.mp4",
-      "/videos/smm/v4.mp4",
-      "/videos/smm/v5.mp4",
-      "/videos/smm/v6.mp4",
-      "/videos/smm/v7.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929216/v1_ywbnpe.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929333/v2_wxvn9h.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929252/v3_npr5ac.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929175/v4_aylzue.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929476/v5_ngum2t.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929305/v6_mcg92u.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773929473/v7_cxycma.mp4",
     ],
 
     "Personal Branding": [
-      "/videos/branding/v1.mp4",
-      "/videos/branding/v2.mp4",
-      "/videos/branding/v3.mp4",
-      "/videos/branding/v4.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773930069/v1_z8nd43.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773930029/v2_c6k3zy.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773930680/v3_tdc04g.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773930056/v4_epiubk.mp4",
     ],
 
     "Video Production": [
-      "/videos/production/v1.mp4",
-      "/videos/production/v2.mp4",
-      "/videos/production/v3.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931298/v1_pueere.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931302/v2_qyvhmx.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931327/v4_llhr20.mp4",
     ],
 
     "Product Videos": [
-      "/videos/product/v1.mp4",
-      "/videos/product/v2.mp4",
-      "/videos/product/v3.mp4",
-      "/videos/product/v4.mp4",
-      "/videos/product/v5.mp4",
-      "/videos/product/v6.mp4",
-      "/videos/product/v7.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931513/v1_uy6mir.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931513/v2_gbo9tz.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931513/v3_lh2pgf.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931517/v4_rquttd.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931517/v5_kyqbkf.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931517/v6_x5jomu.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931514/v7_gobo3b.mp4",
     ],
 
     BTS: [
-      "/videos/bts/v1.mp4",
-      "/videos/bts/v2.mp4",
-      "/videos/bts/v3.mp4",
-      "/videos/bts/v4.mp4",
-      "/videos/bts/v5.mp4",
-      "/videos/bts/v6.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931965/v1_c6wul0.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931884/v2_lsjxkr.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931934/v3_d2hx4k.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931921/v4_bjkpfs.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773932429/v5_p4lpkq.mp4",
+      "https://res.cloudinary.com/dem2kbbpm/video/upload/v1773931883/v6_ajlrfn.mp4",
     ],
   };
 
