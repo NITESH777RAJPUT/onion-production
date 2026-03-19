@@ -5,7 +5,7 @@ import OurServices from "../components/OurServices";
 import Services from "../components/Services";
 import About from "../components/About";
 import Process from "../components/Process";
-import Team from "../components/Team";
+import WhatWeDo from "../components/WhatWeDo"; // ✅ FIX
 import WhyChoose from "../components/WhyChoose";
 // import Portfolio from "../components/Portfolio";
 import Testimonials from "../components/Testimonials";
@@ -24,11 +24,13 @@ function Home() {
       <OurServices />
 
       {/* WHAT WE DO */}
+      <WhatWeDo /> {/* ✅ yaha hona chahiye */}
+
+      {/* WORK / VIDEOS */}
       <Services />
 
       <About />
       <Process />
-      <Team />
       <WhyChoose />
       {/* <Portfolio /> */}
       <Testimonials />
