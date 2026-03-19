@@ -8,14 +8,14 @@ function Stats() {
 
         <div>
           <h2 className="text-4xl font-bold text-green-500">
-            <CountUp end={50} duration={3} />+
+            <CountUp end={100} duration={3} />+
           </h2>
           <p>Projects Completed</p>
         </div>
 
         <div>
           <h2 className="text-4xl font-bold text-green-500">
-            <CountUp end={20} duration={3} />+
+            <CountUp end={30} duration={3} />+
           </h2>
           <p>Happy Clients</p>
         </div>
