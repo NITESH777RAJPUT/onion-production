@@ -191,6 +191,23 @@ h1, h2, h3, h4, h5, h6 {
   left: 150%;
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
 /* Optional subtle grain/noise background (uncomment if wanted) */
 /*
 body::before {
