@@ -22,7 +22,7 @@ function Footer() {
             <ul className="space-y-3 text-zinc-300">
 
               <li className="flex items-center gap-3 hover:text-yellow-400 transition">
-                <FaPhoneAlt /> 62990 41751
+                <FaPhoneAlt /> 7823041751
               </li>
 
               <li className="flex items-center gap-3 hover:text-yellow-400 transition">
@@ -34,7 +34,7 @@ function Footer() {
               </li>
 
               <li className="flex items-center gap-3 hover:text-yellow-400 transition">
-                <FaPhoneAlt /> 86260 17403
+                <FaPhoneAlt /> 74880 39742
               </li>
 
             </ul>

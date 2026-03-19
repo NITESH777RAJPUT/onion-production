@@ -18,7 +18,7 @@ function Contact() {
             
             <div className="pt-4">
               <span className="text-xs font-black tracking-[0.3em] text-green-500 uppercase block mb-2">Based in</span>
-              <p className="text-lg font-bold text-white">Mumbai, Maharashtra</p>
+              <p className="text-lg font-bold text-white">Pune, Maharashtra</p>
             </div>
           </div>
 

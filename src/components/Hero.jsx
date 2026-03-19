@@ -31,7 +31,7 @@ function Hero() {
         <div className="flex items-center justify-center gap-3 mb-8">
           <span className="w-8 h-[1px] bg-yellow-400"></span>
           <span className="text-yellow-400 text-xs uppercase tracking-[0.4em] font-bold">
-            Mumbai's Finest Production House
+            Punes's Finest Production House
           </span>
           <span className="w-8 h-[1px] bg-yellow-400"></span>
         </div>
