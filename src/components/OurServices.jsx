@@ -1,62 +1,104 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function OurServices() {
   const categories = [
-    "UGC Video",
-    "TVC/DVC",
+    "UGC",
     "SMM",
-    "Video Production",
     "Personal Branding",
-    "Influencer Marketing",
+    "Video Production",
+    "Product Videos",
+    "BTS",
   ];
 
-  const [active, setActive] = useState("UGC Video");
-  const [sliderIndex, setSliderIndex] = useState(0); // mobile slider ke liye
-  const [unmutedVideoId, setUnmutedVideoId] = useState(null); // null = sab muted
+  const [active, setActive] = useState("UGC");
+  const [unmutedVideoId, setUnmutedVideoId] = useState(null);
 
-  const videos = {
-    "UGC Video": ["/videos/v1.mp4", "/videos/v2.mp4", "/videos/v3.mp4", "/videos/v4.mp4"],
-    "TVC/DVC": ["/videos/v1.mp4", "/videos/v2.mp4", "/videos/v3.mp4", "/videos/v4.mp4"],
-    "SMM": ["/videos/v1.mp4", "/videos/v2.mp4", "/videos/v3.mp4", "/videos/v4.mp4"],
-    // baaki categories ke videos daal dena
-  };
+  const scrollRef = useRef(null);
 
-  const currentVideos = videos[active] || videos["UGC Video"];
+  const scroll = (direction) => {
+    const container = scrollRef.current;
+    const scrollAmount = 320;
 
-  // Unique ID banane ke liye — har video ka alag identity
-  const getVideoId = (category, index) => `${category}-${index}`;
-
-  const nextVideo = () => {
-    setSliderIndex((prev) => (prev + 1) % currentVideos.length);
-  };
-
-  const prevVideo = () => {
-    setSliderIndex((prev) =>
-      prev === 0 ? currentVideos.length - 1 : prev - 1
-    );
-  };
-
-  const toggleMute = (category, videoIndex) => {
-    const thisVideoId = getVideoId(category, videoIndex);
-    // Agar yeh pehle se unmuted hai → mute kar do (sab mute)
-    if (unmutedVideoId === thisVideoId) {
-      setUnmutedVideoId(null);
+    if (direction === "left") {
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
     } else {
-      // Naya video unmute karo (pehle wala apne aap mute ho jayega)
-      setUnmutedVideoId(thisVideoId);
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
 
-  const isMuted = (category, videoIndex) => {
-    const thisVideoId = getVideoId(category, videoIndex);
-    return unmutedVideoId !== thisVideoId;
+  const videos = {
+    UGC: [
+      "/videos/ugc/v1.mp4",
+      "/videos/ugc/v2.mp4",
+      "/videos/ugc/v3.mp4",
+      "/videos/ugc/v4.mp4",
+    ],
+
+    SMM: [
+      "/videos/smm/v1.mp4",
+      "/videos/smm/v2.mp4",
+      "/videos/smm/v3.mp4",
+      "/videos/smm/v4.mp4",
+      "/videos/smm/v5.mp4",
+      "/videos/smm/v6.mp4",
+      "/videos/smm/v7.mp4",
+    ],
+
+    "Personal Branding": [
+      "/videos/branding/v1.mp4",
+      "/videos/branding/v2.mp4",
+      "/videos/branding/v3.mp4",
+      "/videos/branding/v4.mp4",
+    ],
+
+    "Video Production": [
+      "/videos/production/v1.mp4",
+      "/videos/production/v2.mp4",
+      "/videos/production/v3.mp4",
+    ],
+
+    "Product Videos": [
+      "/videos/product/v1.mp4",
+      "/videos/product/v2.mp4",
+      "/videos/product/v3.mp4",
+      "/videos/product/v4.mp4",
+      "/videos/product/v5.mp4",
+      "/videos/product/v6.mp4",
+      "/videos/product/v7.mp4",
+    ],
+
+    BTS: [
+      "/videos/bts/v1.mp4",
+      "/videos/bts/v2.mp4",
+      "/videos/bts/v3.mp4",
+      "/videos/bts/v4.mp4",
+      "/videos/bts/v5.mp4",
+      "/videos/bts/v6.mp4",
+    ],
   };
+
+  const currentVideos = videos[active] || [];
+
+  const getVideoId = (category, index) => `${category}-${index}`;
+
+  const toggleMute = (category, index) => {
+    const id = getVideoId(category, index);
+    setUnmutedVideoId(unmutedVideoId === id ? null : id);
+  };
+
+  const isMuted = (category, index) => {
+    return unmutedVideoId !== getVideoId(category, index);
+  };
+
+  const showArrows = currentVideos.length > 4;
 
   return (
     <section className="py-24 bg-black text-white">
       <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
         <h2 className="text-4xl md:text-6xl font-black text-yellow-400 text-center mb-12">
-          OUR SERVICES
+          OUR WORK
         </h2>
 
         {/* Tabs */}
@@ -66,10 +108,9 @@ function OurServices() {
               key={cat}
               onClick={() => {
                 setActive(cat);
-                setSliderIndex(0);
-                setUnmutedVideoId(null); // category change → sab mute
+                setUnmutedVideoId(null);
               }}
-              className={`px-6 py-2 rounded-full whitespace-nowrap text-sm font-semibold ${
+              className={`px-6 py-2 rounded-full whitespace-nowrap text-sm font-semibold transition ${
                 active === cat
                   ? "bg-yellow-400 text-black"
                   : "bg-zinc-200 text-black"
@@ -80,71 +121,67 @@ function OurServices() {
           ))}
         </div>
 
-        {/* ---------------- MOBILE SLIDER ---------------- */}
-        <div className="md:hidden relative flex justify-center">
-          <button
-            onClick={prevVideo}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black w-10 h-10 rounded-full z-10"
-          >
-            ‹
-          </button>
+        {/* SLIDER */}
+        <div className="relative">
 
-          <div className="relative">
-            <video
-              key={currentVideos[sliderIndex]} // remount on change
-              src={currentVideos[sliderIndex]}
-              autoPlay
-              muted={isMuted(active, sliderIndex)}
-              loop
-              playsInline
-              className="w-[260px] h-[460px] object-cover rounded-2xl"
-            />
-
+          {/* LEFT ARROW */}
+          {showArrows && (
             <button
-              onClick={() => toggleMute(active, sliderIndex)}
-              className="absolute top-3 right-3 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center"
+              onClick={() => scroll("left")}
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 bg-white text-black w-9 h-9 rounded-full shadow"
             >
-              {isMuted(active, sliderIndex) ? "🔇" : "🔊"}
+              ‹
             </button>
+          )}
+
+          {/* RIGHT ARROW */}
+          {showArrows && (
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 bg-white text-black w-9 h-9 rounded-full shadow"
+            >
+              ›
+            </button>
+          )}
+
+          {/* VIDEOS */}
+          <div
+            ref={scrollRef}
+            className={`flex gap-4 md:gap-6 overflow-x-auto px-4 md:px-10 scrollbar-hide snap-x ${
+              currentVideos.length <= 4 ? "justify-center" : ""
+            }`}
+          >
+            {currentVideos.map((video, i) => {
+              const muted = isMuted(active, i);
+
+              return (
+                <div
+                  key={i}
+                  className="min-w-[48%] md:min-w-[280px] snap-start relative rounded-2xl overflow-hidden border border-white/10"
+                >
+                  <video
+                    src={video}
+                    autoPlay
+                    muted={muted}
+                    loop
+                    playsInline
+                    className="w-full h-[300px] md:h-[400px] object-cover hover:scale-105 transition duration-300"
+                  />
+
+                  {/* Mute Button */}
+                  <button
+                    onClick={() => toggleMute(active, i)}
+                    className="absolute top-3 right-3 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center"
+                  >
+                    {muted ? "🔇" : "🔊"}
+                  </button>
+                </div>
+              );
+            })}
           </div>
 
-          <button
-            onClick={nextVideo}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black w-10 h-10 rounded-full z-10"
-          >
-            ›
-          </button>
         </div>
 
-        {/* ---------------- DESKTOP GRID ---------------- */}
-        <div className="hidden md:grid md:grid-cols-4 gap-8">
-          {currentVideos.map((video, i) => {
-            const isThisMuted = isMuted(active, i);
-
-            return (
-              <div
-                key={i}
-                className="relative rounded-2xl overflow-hidden border border-white/10 hover:scale-[1.05] transition"
-              >
-                <video
-                  src={video}
-                  autoPlay
-                  muted={isThisMuted}
-                  loop
-                  playsInline
-                  className="w-full h-[480px] object-cover"
-                />
-
-                <button
-                  onClick={() => toggleMute(active, i)}
-                  className="absolute top-3 right-3 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center"
-                >
-                  {isThisMuted ? "🔇" : "🔊"}
-                </button>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
