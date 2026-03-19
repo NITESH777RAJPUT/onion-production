@@ -99,7 +99,10 @@ function OurServices() {
   }, [active]);
 
   return (
-    <section className="py-12 md:py-24 bg-black text-white overflow-hidden font-sans">
+    <section
+  id="work"
+  className="py-12 md:py-24 bg-black text-white overflow-hidden font-sans"
+>
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl md:text-7xl font-black italic tracking-tighter text-yellow-400 text-center mb-8">
           OUR WORK
