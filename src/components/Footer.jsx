@@ -54,7 +54,7 @@ function Footer() {
                 className="flex items-center gap-3 text-zinc-300 hover:text-yellow-400 transition"
               >
                 <FaEnvelope />
-                hello@onionproduction.in
+                Onionstudio1999@gmail.com
               </a>
             </div>
 
