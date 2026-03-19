@@ -63,12 +63,7 @@ function Footer() {
                 Office Address
               </h4>
 
-              <p className="flex gap-3 text-zinc-400 leading-relaxed">
-                <FaMapMarkerAlt className="mt-1" />
-                Flat No 05, Building No 01, Sukhawani Society,
-                Adinath Nagar, Gavane Wasti,
-                Bhosari - 411039
-              </p>
+             
             </div>
 
           </div>
